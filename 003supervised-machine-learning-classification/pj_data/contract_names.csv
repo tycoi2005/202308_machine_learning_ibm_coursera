@@ -1,0 +1,120 @@
+contract_names,count
+BNB Smart Chain (BEP20),461
+Ethereum,142
+"Ethereum,BNB Smart Chain (BEP20)",114
+Solana,46
+Polygon,34
+"Ethereum,BNB Smart Chain (BEP20),Polygon",33
+"Ethereum,Polygon",28
+"BNB Smart Chain (BEP20),Polygon",22
+"Ethereum,Solana",14
+Avalanche C-Chain,14
+"BNB Smart Chain (BEP20),Solana",11
+"Ethereum,Avalanche C-Chain",9
+"BNB Smart Chain (BEP20),Cardano",8
+Cardano,8
+"Ethereum,BNB Smart Chain (BEP20),Gnosis Chain,Polygon",6
+"Ethereum,BNB Smart Chain (BEP20),HECO,Polygon,OKExChain",5
+"Polygon,Arbitrum",5
+SUI,5
+Chiliz,4
+"Arbitrum,Aptos,BNB Smart Chain (BEP20)",4
+"Ethereum,BNB Smart Chain (BEP20),Gnosis Chain,Fantom,Polygon,Avalanche C-Chain,Celo,Optimism,Arbitrum,Cube network",3
+"Ethereum,BNB Smart Chain (BEP20),Avalanche C-Chain,Fantom,Polygon",3
+"Ethereum,BNB Smart Chain (BEP20),Fantom,Polygon",3
+"BNB Smart Chain (BEP20),KardiaChain",3
+"Ethereum,Near,BNB Smart Chain (BEP20)",3
+"Polygon,Ethereum,BNB Smart Chain (BEP20)",3
+"Ethereum,Polygon,Aurora",3
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Moonriver",3
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Avalanche C-Chain",3
+"Ethereum,BNB Smart Chain (BEP20),Solana",3
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Avalanche C-Chain,Arbitrum",3
+"BNB Smart Chain (BEP20),Moonriver",3
+"BNB Smart Chain (BEP20),TON",3
+"Avalanche C-Chain,BNB Smart Chain (BEP20),Ethereum",2
+"Ethereum,BNB Smart Chain (BEP20),Near,Aurora",2
+"Ethereum,BNB Smart Chain (BEP20),HECO,Polygon",2
+Arbitrum,2
+"Ethereum,BNB Smart Chain (BEP20),Gnosis Chain,Polygon,Arbitrum",2
+"Ethereum,BNB Smart Chain (BEP20),Algorand",2
+"Ethereum,BNB Smart Chain (BEP20),Solana,Polygon",2
+Tezos,2
+"BNB Smart Chain (BEP20),Avalanche C-Chain",2
+"Ethereum,Polygon,Shiden,Metis Andromeda",2
+"BNB Smart Chain (BEP20),Gnosis Chain",2
+"Ethereum,HECO",2
+"BNB Smart Chain (BEP20),Solana,OKExChain",2
+Celo,2
+Cosmos,2
+"Ethereum,BNB Smart Chain (BEP20),Aurora",2
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Optimism",2
+"Ethereum,BNB Smart Chain (BEP20),Fantom,Polygon,Arbitrum",2
+Fantom,2
+"Ethereum,BNB Smart Chain (BEP20),Cosmos",2
+"BNB Smart Chain (BEP20),Ethereum",2
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Avalanche C-Chain,Moonbeam,Arbitrum,GateChain",2
+"Ethereum,Metis Andromeda",2
+"Tron10,BNB Smart Chain (BEP20)",2
+OKExChain,2
+"Ethereum,HECO,BNB Smart Chain (BEP20)",1
+Harmony,1
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Harmony",1
+"Zilliqa,Ethereum,BNB Smart Chain (BEP20),Polygon,Metis Andromeda",1
+"Ethereum,BNB Smart Chain (BEP20),HECO,Tron20",1
+"Ethereum,BNB Smart Chain (BEP20),HECO",1
+"Ethereum,BNB Smart Chain (BEP20),Polygon,OKExChain",1
+"HECO,BNB Smart Chain (BEP20),Ethereum",1
+"Ethereum,BNB Smart Chain (BEP20),Solana,Polygon,Moonbeam,Polygon zkEVM",1
+"Tron20,BNB Smart Chain (BEP20)",1
+"Ethereum,BNB Smart Chain (BEP20),Gnosis Chain,Fantom",1
+"Ethereum,BNB Beacon Chain (BEP2),Polygon",1
+BNB Beacon Chain (BEP2),1
+"BNB Beacon Chain (BEP2),Polygon,BNB Smart Chain (BEP20)",1
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Avalanche C-Chain,Optimism,Arbitrum",1
+"Ethereum,Tron10",1
+"Ethereum,Solana,Polygon",1
+"Ethereum,BNB Smart Chain (BEP20),Avalanche C-Chain,Arbitrum",1
+"Ethereum,Harmony,Solana,BNB Smart Chain (BEP20),Ronin",1
+"Ethereum,BNB Smart Chain (BEP20),Solana,HECO,Polygon,Near",1
+"Terra Classic,Ethereum",1
+"Ethereum,BNB Smart Chain (BEP20),Optimism,Arbitrum",1
+"Ethereum,BNB Smart Chain (BEP20),Fantom,Polygon,Avalanche C-Chain",1
+"Ethereum,BNB Smart Chain (BEP20),Polkadot",1
+"BNB Smart Chain (BEP20),HECO",1
+"Ethereum,Gnosis Chain",1
+"BNB Smart Chain (BEP20),Velas",1
+"Ethereum,BNB Smart Chain (BEP20),Near",1
+"Ethereum,BNB Smart Chain (BEP20),Arbitrum",1
+Dogechain,1
+"Ethereum,Near",1
+Tron20,1
+"BNB Smart Chain (BEP20),Arbitrum",1
+"BNB Smart Chain (BEP20),Step",1
+"BNB Smart Chain (BEP20),Arbitrum,Arbitrum Nova",1
+"Aptos,SUI",1
+"Ethereum,BNB Smart Chain (BEP20),Cardano,Step",1
+Core,1
+"BNB Smart Chain (BEP20),KCC",1
+"BNB Smart Chain (BEP20),Ethereum,Polygon",1
+"BNB Smart Chain (BEP20),Ethereum,Optimism",1
+"Ethereum,BNB Smart Chain (BEP20),Polygon,Cronos",1
+Elrond,1
+"BNB Smart Chain (BEP20),Polygon,Avalanche C-Chain,Arbitrum,Ethereum",1
+Fuse,1
+"Ethereum,BNB Smart Chain (BEP20),Fantom,OKExChain",1
+"Ethereum,Harmony,Solana",1
+HECO,1
+"Ethereum,BNB Smart Chain (BEP20),Avalanche C-Chain,Moonriver",1
+"Polygon,Ethereum",1
+"Ethereum,BNB Smart Chain (BEP20),Solana,Terra Classic",1
+"Ethereum,Cardano,Arbitrum",1
+Zilliqa,1
+"BNB Smart Chain (BEP20),Elrond",1
+"Ethereum,Arbitrum",1
+"IoTex,BNB Smart Chain (BEP20)",1
+"HECO,BNB Smart Chain (BEP20)",1
+"Ethereum,BNB Smart Chain (BEP20),Cardano",1
+"Solana,Avalanche C-Chain",1
+"Ethereum,Harmony",1
+"Ethereum,BNB Smart Chain (BEP20),Moonbeam,Oasis Network,Metis Andromeda",1
