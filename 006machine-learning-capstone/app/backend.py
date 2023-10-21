@@ -28,6 +28,10 @@ def load_courses():
 def load_bow():
     return pd.read_csv("courses_bows.csv")
 
+def load_genre():
+    course_genre_url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML321EN-SkillsNetwork/labs/datasets/course_genre.csv"
+    course_genres_df = pd.read_csv(course_genre_url)
+    return course_genres_df
 
 def add_new_ratings(new_courses):
     res_dict = {}

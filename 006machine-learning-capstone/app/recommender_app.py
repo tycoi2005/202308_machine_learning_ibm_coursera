@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import time
 import backend as backend
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -36,6 +39,9 @@ def load_courses():
 def load_bow():
     return backend.load_bow()
 
+@st.cache
+def load_genres():
+    return backend.load_genre()
 
 # Initialize the app by first loading datasets
 def init__recommender_app():
@@ -45,6 +51,8 @@ def init__recommender_app():
         sim_df = load_course_sims()
         course_df = load_courses()
         course_bow_df = load_bow()
+        # get course_genre
+        course_genres_df = load_genres
 
     # Select courses
     st.success('Datasets loaded successfully...')
@@ -167,3 +175,24 @@ if pred_button and selected_courses_df.shape[0] > 0:
     course_df = load_courses()
     res_df = pd.merge(res_df, course_df, on=["COURSE_ID"]).drop('COURSE_ID', axis=1)
     st.table(res_df)
+
+
+# Course count per genres
+st.sidebar.subheader("5. Course per genres")
+course_per_genre_button = st.sidebar.button("Courses per Genre")
+if course_per_genre_button:
+    course_genres_df = load_genres()
+    rs = course_genres_df.drop(["COURSE_ID", "TITLE"], axis=1).sum().sort_values()
+    fig, ax = plt.subplots()
+    rs.plot.bar()
+    st.pyplot(fig)
+
+# Course enrollment distribution​
+st.sidebar.subheader("6. Course enrollment distribution​")
+course_enrollment_distribution_button = st.sidebar.button("Course enrollment distribution​")
+if course_enrollment_distribution_button:
+    course_genres_df = load_genres()
+    rs = course_genres_df.drop(["COURSE_ID", "TITLE"], axis=1).sum().sort_values()
+    fig, ax = plt.subplots()
+    rs.plot.bar()
+    st.pyplot(fig)
