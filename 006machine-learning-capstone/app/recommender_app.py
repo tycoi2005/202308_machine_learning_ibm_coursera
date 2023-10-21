@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import time
+
+from wordcloud import STOPWORDS, WordCloud
 import backend as backend
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,26 +22,26 @@ st.set_page_config(
 
 # ------- Functions ------
 # Load datasets
-@st.cache
+@st.cache_data
 def load_ratings():
     return backend.load_ratings()
 
 
-@st.cache
+@st.cache_data
 def load_course_sims():
     return backend.load_course_sims()
 
 
-@st.cache
+@st.cache_data
 def load_courses():
     return backend.load_courses()
 
 
-@st.cache
+@st.cache_data
 def load_bow():
     return backend.load_bow()
 
-@st.cache
+@st.cache_data
 def load_genres():
     return backend.load_genre()
 
@@ -94,7 +96,10 @@ def train(model_name, params):
         st.success('Done!')
     # TODO: Add other model training code here
     elif model_name == backend.models[1]:
-        pass
+        # Start training model using user profile and course genres
+        with st.spinner('Training... with user profile and course genres'):
+            backend.train(model_name, params)
+        st.success('Done!')
     else:
         pass
 
@@ -144,6 +149,7 @@ elif model_selection == backend.models[1]:
     profile_sim_threshold = st.sidebar.slider('User Profile Similarity Threshold %',
                                               min_value=0, max_value=100,
                                               value=50, step=10)
+    params['sim_threshold'] = profile_sim_threshold
 # Clustering model
 elif model_selection == backend.models[2]:
     cluster_no = st.sidebar.slider('Number of Clusters',
@@ -191,8 +197,35 @@ if course_per_genre_button:
 st.sidebar.subheader("6. Course enrollment distribution​")
 course_enrollment_distribution_button = st.sidebar.button("Course enrollment distribution​")
 if course_enrollment_distribution_button:
-    course_genres_df = load_genres()
-    rs = course_genres_df.drop(["COURSE_ID", "TITLE"], axis=1).sum().sort_values()
+    rating_df = load_ratings()
+    ratingcount = rating_df.groupby(["user"]).size()
     fig, ax = plt.subplots()
-    rs.plot.bar()
+    ratingcount.plot.hist(bins=100)
     st.pyplot(fig)
+
+
+# Top 20 courses
+st.sidebar.subheader("7. Top 20 courses")
+top_20courses_button = st.sidebar.button("Top 20 courses")
+if top_20courses_button:
+    ratings_df = load_ratings()
+    course_df = load_courses()
+    newdf = pd.merge(ratings_df, course_df[['COURSE_ID', 'TITLE']], how='left', left_on='item',right_on='COURSE_ID')
+    top20 = newdf[['TITLE','rating']].groupby('TITLE').count().sort_values(by='rating',ascending=False)[:20]
+    st.table(top20)
+
+# Word cloud of course titles​
+st.sidebar.subheader("7. Word cloud of course titles​")
+word_cloud_course_title_button = st.sidebar.button("Word cloud of course titles​")
+if word_cloud_course_title_button:
+    ratings_df = load_ratings()
+    course_df = load_courses()
+    titles = " ".join(title for title in course_df['TITLE'].astype(str))
+
+    stopwords = set(STOPWORDS)
+    stopwords.update(["getting started", "using", "enabling", "template", "university", "end", "introduction", "basic"])
+
+    wordcloud = WordCloud(stopwords=stopwords, background_color="white", width=800, height=400)
+    wordcloud.generate(titles)
+    st.image(wordcloud.to_image())
+

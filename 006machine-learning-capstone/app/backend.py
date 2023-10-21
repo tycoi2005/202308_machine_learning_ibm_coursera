@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 models = ("Course Similarity",
@@ -80,11 +81,35 @@ def course_similarity_recommendations(idx_id_dict, id_idx_dict, enrolled_course_
     res = {k: v for k, v in sorted(res.items(), key=lambda item: item[1], reverse=True)}
     return res
 
+def user_profile_similarity_recommendations(enrolled_course_ids):
+    course_df = load_courses()
+    all_courses = set(course_df['COURSE_ID'].values)
+    unselected_course_ids = all_courses.difference(enrolled_course_ids)
+
+    test_user_vector = []
+    for course in all_courses:
+        if course in enrolled_course_ids:
+            test_user_vector.append(1)
+        else:
+            test_user_vector.append(0)
+
+    genre_matrix = load_genre()
+    unselected_course_ids = genre_matrix.loc[~genre_matrix.COURSE_ID.isin(enrolled_course_ids)]
+    recommendation_scores = np.dot(unselected_course_ids.iloc[:, 2:].values, test_user_vector)
+    return recommendation_scores
 
 # Model training
 def train(model_name, params):
     # TODO: Add model training code here
-    pass
+    if model_name in [models[0], models[1]]:
+        # Start training course similarity model
+        return True
+    # TODO: Add other model training code here
+    elif model_name == models[2]:
+        # Start training model
+        pass
+    else:
+        pass
 
 
 # Prediction
@@ -94,24 +119,36 @@ def predict(model_name, user_ids, params):
         sim_threshold = params["sim_threshold"] / 100.0
     idx_id_dict, id_idx_dict = get_doc_dicts()
     sim_matrix = load_course_sims().to_numpy()
+    ratings_df = load_ratings()
+    courses_df = load_courses()
+    user_id = user_ids[0]
+    user_ratings = ratings_df[ratings_df['user'] == user_id]
+    enrolled_course_ids = user_ratings['item'].to_list()
+
     users = []
     courses = []
     scores = []
     res_dict = {}
+    # Course Similarity model
+    if model_name == models[0]:
+        user_ratings = ratings_df[ratings_df['user'] == user_id]
+        enrolled_course_ids = user_ratings['item'].to_list()
+        res = course_similarity_recommendations(idx_id_dict, id_idx_dict, enrolled_course_ids, sim_matrix)
+        for key, score in res.items():
+            if score >= sim_threshold:
+                users.append(user_id)
+                courses.append(key)
+                scores.append(score)
+    # TODO: Add prediction model code here
+    if model_name == models[1]:
+        enrolled_course_ids = user_ratings['item'].to_list()
 
-    for user_id in user_ids:
-        # Course Similarity model
-        if model_name == models[0]:
-            ratings_df = load_ratings()
-            user_ratings = ratings_df[ratings_df['user'] == user_id]
-            enrolled_course_ids = user_ratings['item'].to_list()
-            res = course_similarity_recommendations(idx_id_dict, id_idx_dict, enrolled_course_ids, sim_matrix)
-            for key, score in res.items():
-                if score >= sim_threshold:
-                    users.append(user_id)
-                    courses.append(key)
-                    scores.append(score)
-        # TODO: Add prediction model code here
+        res = user_profile_similarity_recommendations(enrolled_course_ids)
+        for key, score in res.items():
+            if score >= sim_threshold:
+                users.append(user_id)
+                courses.append(key)
+                scores.append(score)
 
     res_dict['USER'] = users
     res_dict['COURSE_ID'] = courses
