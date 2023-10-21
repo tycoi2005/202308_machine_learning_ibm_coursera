@@ -82,7 +82,7 @@ def train(model_name, params):
         # Start training course similarity model
         with st.spinner('Training...'):
             time.sleep(0.5)
-            backend.train(model_name)
+            backend.train(model_name, params)
         st.success('Done!')
     # TODO: Add other model training code here
     elif model_name == backend.models[1]:
